@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"github.com/scionproto/scion/go/lib/addr"
+	"github.com/scionproto/scion/go/lib/common"
 	"github.com/scionproto/scion/go/lib/env"
 	"github.com/scionproto/scion/go/lib/log"
 	"github.com/scionproto/scion/go/lib/sciond"
@@ -31,6 +32,7 @@ import (
 	"github.com/scionproto/scion/go/lib/serrors"
 	"github.com/scionproto/scion/go/lib/snet"
 	"github.com/scionproto/scion/go/lib/snet/addrutil"
+	"github.com/scionproto/scion/go/lib/spath"
 )
 
 var (
@@ -43,6 +45,8 @@ var (
 	status     = flag.Bool("p", false, "Probe the paths and print out the statuses")
 	localIPStr = flag.String("local", "", "(Optional) local IP address to use for health checks")
 	version    = flag.Bool("version", false, "Output version information and exit.")
+	verbose    = flag.Bool("v", false, "Switch to verbose output and show additional "+
+		"information about paths.")
 )
 
 var (
@@ -109,8 +113,39 @@ func main() {
 		if *status {
 			fmt.Printf(" Status: %s", pathStatuses[pathprobe.PathKey(path)])
 		}
+		if *verbose {
+			printHFDetails(i, path)
+		}
 		fmt.Printf("\n")
 	}
+}
+
+func printHFDetails(i int, path snet.Path) {
+	vpath := path.Path()
+	vpath.HopOff = common.LineLen // skip InfoField, cannot use vpath.InitOffsets() as it skips more
+	fmt.Printf("\nPath #%2d:\n Fields:", i)
+	for {
+		if vpath.HopOff == len(vpath.Raw) {
+			break
+		}
+		hf, err := vpath.GetHopField(vpath.HopOff)
+		if err != nil {
+			fmt.Printf("\n\nGetHopField err:%v", err)
+			break
+		}
+		XoverVal := "."
+		if hf.Xover {
+			XoverVal = "X"
+		}
+		VerifyOnlyVal := "."
+		if hf.VerifyOnly {
+			VerifyOnlyVal = "V"
+		}
+		fmt.Printf("\n\tHF %s%s InIF: %3v OutIF: %3v \t\t\tExpTime: %v Mac: %v",
+			XoverVal, VerifyOnlyVal, hf.ConsIngress, hf.ConsEgress, hf.ExpTime, hf.Mac)
+		vpath.IncOffsetsRaw(spath.HopFieldLength, false)
+	}
+	fmt.Println()
 }
 
 func validateFlags() {
