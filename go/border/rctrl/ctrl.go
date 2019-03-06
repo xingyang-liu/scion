@@ -35,7 +35,7 @@ import (
 )
 
 const (
-	maxBufSize = 9 * 1024
+	maxBufSize = 64 * 1024
 )
 
 var (
