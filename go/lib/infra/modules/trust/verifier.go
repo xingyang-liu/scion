@@ -42,8 +42,8 @@ type verifier struct {
 // control-plane PKI certificates through infra.Verifier interface.
 func NewVerifier(provider CryptoProvider) infra.Verifier {
 	return &verifier{
-		AllowSkew: 1 * time.Second,
-		MaxAge:    2 * time.Second,
+		AllowSkew: 10 * time.Second, // XXX scionlab: allow up to 10s skew
+		MaxAge:    10 * time.Second, //     "
 		Store:     provider,
 	}
 }
