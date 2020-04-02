@@ -236,32 +236,506 @@ func (p HiddenPathSegExtn_Promise) Struct() (HiddenPathSegExtn, error) {
 	return HiddenPathSegExtn{s}, err
 }
 
-const schema_e6c88f91b6a1209e = "x\xda\x8c\xce?\x8b\x13A\x1c\xc6\xf1\xe7\x99\xd9d\x8d" +
-	"h\x925\xfb\x02\xc4RD\x08\"\x88\x8d\x7fH\xc0t" +
-	";\xc6F\x10t\xc9\x8e\xc9Bvva'\xb0[\x05" +
-	"A\xad\x04I\xa1b#\xe45\x08bk\xa1\xf8\x1a\xae" +
-	";\xb8?/\xe0\xaa\xab\xf6\xd8\x14w\x1c\x97\xe2\xda\x1f" +
-	"\x9fy\xe6\xdb\xfd\xf6X\xf4\x1b\x1d\x02\xeaZ\xa3Y\x1d" +
-	"\xef\xdd\x7f\xf0{\xe7\xcfW\xa8\x0eE\xf5\xe3\xe6\xfa\xd7" +
-	"\xea\xf3\xff\x034\xe8\x02\xfdD\xd0+]\xc0[\x1c\x82" +
-	"\xd5\xfa\xdf\x9dwm\xfd\xf1oMyF\x1d\x17\xb8\xf7" +
-	"\x927\xd8\x8b\xebG=\xcdG`u\xf4i\x7f\xf7\xfb" +
-	"\xcf\xb2\xda\x86?\xf0*{_6x\xb5\xc1a\x9e\xbc" +
-	"\xd6\x85\xcd\xe5\xddI\x98\x99\xec\xe1\xf3tac3\x0d" +
-	"\xd2y<)\x87\x85E@\xaa\xaet\x00\x87\x80\x17\xde" +
-	"\x02\xd4+I5\x13\xf4H\x9f\xf5Q?\x05\xd4\x1bI" +
-	"5\x17\xf4\x04}\x0a\xc0\x8bo\x03*\x92T\x99 \xa5" +
-	"O\x09xI\x0dg\x92\xea\xbd\xa0\x9bkKB\x90\xe0" +
-	"2K\xe7/\xcaL\xb3\x09\xc1&\xd8\x89\xdf\x8e\x06l" +
-	"A\xb0\x05.\xe3<\x0as\x9d\xb3\x0d\x06\x92\x9bs{" +
-	"K\xf9h<xbL\xba0\x13\x9dhc\x87\x05m" +
-	"\xdd\xee\x9c\xb6_\xaf\xdb\xafH*\xff\xfc\xef\x17\x96\x9e" +
-	"\xc5Q\xa4M\x10\xda\xd9XO\x87\x855\xc0\xe5\x96N" +
-	"\x02\x00\x00\xff\xff#\x1dpa"
+type Lppair struct{ capnp.Struct }
+
+// Lppair_TypeID is the unique identifier for the type Lppair.
+const Lppair_TypeID = 0x9b721a7656d8c15d
+
+func NewLppair(s *capnp.Segment) (Lppair, error) {
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 0})
+	return Lppair{st}, err
+}
+
+func NewRootLppair(s *capnp.Segment) (Lppair, error) {
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 0})
+	return Lppair{st}, err
+}
+
+func ReadRootLppair(msg *capnp.Message) (Lppair, error) {
+	root, err := msg.RootPtr()
+	return Lppair{root.Struct()}, err
+}
+
+func (s Lppair) String() string {
+	str, _ := text.Marshal(0x9b721a7656d8c15d, s.Struct)
+	return str
+}
+
+func (s Lppair) Interface() uint16 {
+	return s.Struct.Uint16(0)
+}
+
+func (s Lppair) SetInterface(v uint16) {
+	s.Struct.SetUint16(0, v)
+}
+
+func (s Lppair) Interdelay() uint16 {
+	return s.Struct.Uint16(2)
+}
+
+func (s Lppair) SetInterdelay(v uint16) {
+	s.Struct.SetUint16(2, v)
+}
+
+// Lppair_List is a list of Lppair.
+type Lppair_List struct{ capnp.List }
+
+// NewLppair creates a new list of Lppair.
+func NewLppair_List(s *capnp.Segment, sz int32) (Lppair_List, error) {
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 0}, sz)
+	return Lppair_List{l}, err
+}
+
+func (s Lppair_List) At(i int) Lppair { return Lppair{s.List.Struct(i)} }
+
+func (s Lppair_List) Set(i int, v Lppair) error { return s.List.SetStruct(i, v.Struct) }
+
+func (s Lppair_List) String() string {
+	str, _ := text.MarshalList(0x9b721a7656d8c15d, s.List)
+	return str
+}
+
+// Lppair_Promise is a wrapper for a Lppair promised by a client call.
+type Lppair_Promise struct{ *capnp.Pipeline }
+
+func (p Lppair_Promise) Struct() (Lppair, error) {
+	s, err := p.Pipeline.Struct()
+	return Lppair{s}, err
+}
+
+type Lnpcluster struct{ capnp.Struct }
+
+// Lnpcluster_TypeID is the unique identifier for the type Lnpcluster.
+const Lnpcluster_TypeID = 0x94125a99a9ea0a6b
+
+func NewLnpcluster(s *capnp.Segment) (Lnpcluster, error) {
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return Lnpcluster{st}, err
+}
+
+func NewRootLnpcluster(s *capnp.Segment) (Lnpcluster, error) {
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return Lnpcluster{st}, err
+}
+
+func ReadRootLnpcluster(msg *capnp.Message) (Lnpcluster, error) {
+	root, err := msg.RootPtr()
+	return Lnpcluster{root.Struct()}, err
+}
+
+func (s Lnpcluster) String() string {
+	str, _ := text.Marshal(0x94125a99a9ea0a6b, s.Struct)
+	return str
+}
+
+func (s Lnpcluster) Clusterdelay() uint16 {
+	return s.Struct.Uint16(0)
+}
+
+func (s Lnpcluster) SetClusterdelay(v uint16) {
+	s.Struct.SetUint16(0, v)
+}
+
+func (s Lnpcluster) Interfaces() (capnp.UInt16List, error) {
+	p, err := s.Struct.Ptr(0)
+	return capnp.UInt16List{List: p.List()}, err
+}
+
+func (s Lnpcluster) HasInterfaces() bool {
+	p, err := s.Struct.Ptr(0)
+	return p.IsValid() || err != nil
+}
+
+func (s Lnpcluster) SetInterfaces(v capnp.UInt16List) error {
+	return s.Struct.SetPtr(0, v.List.ToPtr())
+}
+
+// NewInterfaces sets the interfaces field to a newly
+// allocated capnp.UInt16List, preferring placement in s's segment.
+func (s Lnpcluster) NewInterfaces(n int32) (capnp.UInt16List, error) {
+	l, err := capnp.NewUInt16List(s.Struct.Segment(), n)
+	if err != nil {
+		return capnp.UInt16List{}, err
+	}
+	err = s.Struct.SetPtr(0, l.List.ToPtr())
+	return l, err
+}
+
+// Lnpcluster_List is a list of Lnpcluster.
+type Lnpcluster_List struct{ capnp.List }
+
+// NewLnpcluster creates a new list of Lnpcluster.
+func NewLnpcluster_List(s *capnp.Segment, sz int32) (Lnpcluster_List, error) {
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1}, sz)
+	return Lnpcluster_List{l}, err
+}
+
+func (s Lnpcluster_List) At(i int) Lnpcluster { return Lnpcluster{s.List.Struct(i)} }
+
+func (s Lnpcluster_List) Set(i int, v Lnpcluster) error { return s.List.SetStruct(i, v.Struct) }
+
+func (s Lnpcluster_List) String() string {
+	str, _ := text.MarshalList(0x94125a99a9ea0a6b, s.List)
+	return str
+}
+
+// Lnpcluster_Promise is a wrapper for a Lnpcluster promised by a client call.
+type Lnpcluster_Promise struct{ *capnp.Pipeline }
+
+func (p Lnpcluster_Promise) Struct() (Lnpcluster, error) {
+	s, err := p.Pipeline.Struct()
+	return Lnpcluster{s}, err
+}
+
+type Lpcluster struct{ capnp.Struct }
+
+// Lpcluster_TypeID is the unique identifier for the type Lpcluster.
+const Lpcluster_TypeID = 0xb5010b195bbe1e2e
+
+func NewLpcluster(s *capnp.Segment) (Lpcluster, error) {
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return Lpcluster{st}, err
+}
+
+func NewRootLpcluster(s *capnp.Segment) (Lpcluster, error) {
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return Lpcluster{st}, err
+}
+
+func ReadRootLpcluster(msg *capnp.Message) (Lpcluster, error) {
+	root, err := msg.RootPtr()
+	return Lpcluster{root.Struct()}, err
+}
+
+func (s Lpcluster) String() string {
+	str, _ := text.Marshal(0xb5010b195bbe1e2e, s.Struct)
+	return str
+}
+
+func (s Lpcluster) Clusterdelay() uint16 {
+	return s.Struct.Uint16(0)
+}
+
+func (s Lpcluster) SetClusterdelay(v uint16) {
+	s.Struct.SetUint16(0, v)
+}
+
+func (s Lpcluster) Latencyinterfacepairs() (Lppair_List, error) {
+	p, err := s.Struct.Ptr(0)
+	return Lppair_List{List: p.List()}, err
+}
+
+func (s Lpcluster) HasLatencyinterfacepairs() bool {
+	p, err := s.Struct.Ptr(0)
+	return p.IsValid() || err != nil
+}
+
+func (s Lpcluster) SetLatencyinterfacepairs(v Lppair_List) error {
+	return s.Struct.SetPtr(0, v.List.ToPtr())
+}
+
+// NewLatencyinterfacepairs sets the latencyinterfacepairs field to a newly
+// allocated Lppair_List, preferring placement in s's segment.
+func (s Lpcluster) NewLatencyinterfacepairs(n int32) (Lppair_List, error) {
+	l, err := NewLppair_List(s.Struct.Segment(), n)
+	if err != nil {
+		return Lppair_List{}, err
+	}
+	err = s.Struct.SetPtr(0, l.List.ToPtr())
+	return l, err
+}
+
+// Lpcluster_List is a list of Lpcluster.
+type Lpcluster_List struct{ capnp.List }
+
+// NewLpcluster creates a new list of Lpcluster.
+func NewLpcluster_List(s *capnp.Segment, sz int32) (Lpcluster_List, error) {
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1}, sz)
+	return Lpcluster_List{l}, err
+}
+
+func (s Lpcluster_List) At(i int) Lpcluster { return Lpcluster{s.List.Struct(i)} }
+
+func (s Lpcluster_List) Set(i int, v Lpcluster) error { return s.List.SetStruct(i, v.Struct) }
+
+func (s Lpcluster_List) String() string {
+	str, _ := text.MarshalList(0xb5010b195bbe1e2e, s.List)
+	return str
+}
+
+// Lpcluster_Promise is a wrapper for a Lpcluster promised by a client call.
+type Lpcluster_Promise struct{ *capnp.Pipeline }
+
+func (p Lpcluster_Promise) Struct() (Lpcluster, error) {
+	s, err := p.Pipeline.Struct()
+	return Lpcluster{s}, err
+}
+
+type Latencyinfo struct{ capnp.Struct }
+
+// Latencyinfo_TypeID is the unique identifier for the type Latencyinfo.
+const Latencyinfo_TypeID = 0xe3ead73eb3ae05b7
+
+func NewLatencyinfo(s *capnp.Segment) (Latencyinfo, error) {
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 2})
+	return Latencyinfo{st}, err
+}
+
+func NewRootLatencyinfo(s *capnp.Segment) (Latencyinfo, error) {
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 2})
+	return Latencyinfo{st}, err
+}
+
+func ReadRootLatencyinfo(msg *capnp.Message) (Latencyinfo, error) {
+	root, err := msg.RootPtr()
+	return Latencyinfo{root.Struct()}, err
+}
+
+func (s Latencyinfo) String() string {
+	str, _ := text.Marshal(0xe3ead73eb3ae05b7, s.Struct)
+	return str
+}
+
+func (s Latencyinfo) Latencynonpeeringclusters() (Lnpcluster_List, error) {
+	p, err := s.Struct.Ptr(0)
+	return Lnpcluster_List{List: p.List()}, err
+}
+
+func (s Latencyinfo) HasLatencynonpeeringclusters() bool {
+	p, err := s.Struct.Ptr(0)
+	return p.IsValid() || err != nil
+}
+
+func (s Latencyinfo) SetLatencynonpeeringclusters(v Lnpcluster_List) error {
+	return s.Struct.SetPtr(0, v.List.ToPtr())
+}
+
+// NewLatencynonpeeringclusters sets the latencynonpeeringclusters field to a newly
+// allocated Lnpcluster_List, preferring placement in s's segment.
+func (s Latencyinfo) NewLatencynonpeeringclusters(n int32) (Lnpcluster_List, error) {
+	l, err := NewLnpcluster_List(s.Struct.Segment(), n)
+	if err != nil {
+		return Lnpcluster_List{}, err
+	}
+	err = s.Struct.SetPtr(0, l.List.ToPtr())
+	return l, err
+}
+
+func (s Latencyinfo) Latencypeeringclusters() (Lpcluster_List, error) {
+	p, err := s.Struct.Ptr(1)
+	return Lpcluster_List{List: p.List()}, err
+}
+
+func (s Latencyinfo) HasLatencypeeringclusters() bool {
+	p, err := s.Struct.Ptr(1)
+	return p.IsValid() || err != nil
+}
+
+func (s Latencyinfo) SetLatencypeeringclusters(v Lpcluster_List) error {
+	return s.Struct.SetPtr(1, v.List.ToPtr())
+}
+
+// NewLatencypeeringclusters sets the latencypeeringclusters field to a newly
+// allocated Lpcluster_List, preferring placement in s's segment.
+func (s Latencyinfo) NewLatencypeeringclusters(n int32) (Lpcluster_List, error) {
+	l, err := NewLpcluster_List(s.Struct.Segment(), n)
+	if err != nil {
+		return Lpcluster_List{}, err
+	}
+	err = s.Struct.SetPtr(1, l.List.ToPtr())
+	return l, err
+}
+
+func (s Latencyinfo) Egresslatency() uint16 {
+	return s.Struct.Uint16(0)
+}
+
+func (s Latencyinfo) SetEgresslatency(v uint16) {
+	s.Struct.SetUint16(0, v)
+}
+
+func (s Latencyinfo) Intooutlatency() uint16 {
+	return s.Struct.Uint16(2)
+}
+
+func (s Latencyinfo) SetIntooutlatency(v uint16) {
+	s.Struct.SetUint16(2, v)
+}
+
+// Latencyinfo_List is a list of Latencyinfo.
+type Latencyinfo_List struct{ capnp.List }
+
+// NewLatencyinfo creates a new list of Latencyinfo.
+func NewLatencyinfo_List(s *capnp.Segment, sz int32) (Latencyinfo_List, error) {
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 2}, sz)
+	return Latencyinfo_List{l}, err
+}
+
+func (s Latencyinfo_List) At(i int) Latencyinfo { return Latencyinfo{s.List.Struct(i)} }
+
+func (s Latencyinfo_List) Set(i int, v Latencyinfo) error { return s.List.SetStruct(i, v.Struct) }
+
+func (s Latencyinfo_List) String() string {
+	str, _ := text.MarshalList(0xe3ead73eb3ae05b7, s.List)
+	return str
+}
+
+// Latencyinfo_Promise is a wrapper for a Latencyinfo promised by a client call.
+type Latencyinfo_Promise struct{ *capnp.Pipeline }
+
+func (p Latencyinfo_Promise) Struct() (Latencyinfo, error) {
+	s, err := p.Pipeline.Struct()
+	return Latencyinfo{s}, err
+}
+
+type LinkmetricsExtn struct{ capnp.Struct }
+
+// LinkmetricsExtn_TypeID is the unique identifier for the type LinkmetricsExtn.
+const LinkmetricsExtn_TypeID = 0x89028b361140a3c2
+
+func NewLinkmetricsExtn(s *capnp.Segment) (LinkmetricsExtn, error) {
+	st, err := capnp.NewStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return LinkmetricsExtn{st}, err
+}
+
+func NewRootLinkmetricsExtn(s *capnp.Segment) (LinkmetricsExtn, error) {
+	st, err := capnp.NewRootStruct(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1})
+	return LinkmetricsExtn{st}, err
+}
+
+func ReadRootLinkmetricsExtn(msg *capnp.Message) (LinkmetricsExtn, error) {
+	root, err := msg.RootPtr()
+	return LinkmetricsExtn{root.Struct()}, err
+}
+
+func (s LinkmetricsExtn) String() string {
+	str, _ := text.Marshal(0x89028b361140a3c2, s.Struct)
+	return str
+}
+
+func (s LinkmetricsExtn) Set() bool {
+	return s.Struct.Bit(0)
+}
+
+func (s LinkmetricsExtn) SetSet(v bool) {
+	s.Struct.SetBit(0, v)
+}
+
+func (s LinkmetricsExtn) LInfo() (Latencyinfo, error) {
+	p, err := s.Struct.Ptr(0)
+	return Latencyinfo{Struct: p.Struct()}, err
+}
+
+func (s LinkmetricsExtn) HasLInfo() bool {
+	p, err := s.Struct.Ptr(0)
+	return p.IsValid() || err != nil
+}
+
+func (s LinkmetricsExtn) SetLInfo(v Latencyinfo) error {
+	return s.Struct.SetPtr(0, v.Struct.ToPtr())
+}
+
+// NewLInfo sets the lInfo field to a newly
+// allocated Latencyinfo struct, preferring placement in s's segment.
+func (s LinkmetricsExtn) NewLInfo() (Latencyinfo, error) {
+	ss, err := NewLatencyinfo(s.Struct.Segment())
+	if err != nil {
+		return Latencyinfo{}, err
+	}
+	err = s.Struct.SetPtr(0, ss.Struct.ToPtr())
+	return ss, err
+}
+
+// LinkmetricsExtn_List is a list of LinkmetricsExtn.
+type LinkmetricsExtn_List struct{ capnp.List }
+
+// NewLinkmetricsExtn creates a new list of LinkmetricsExtn.
+func NewLinkmetricsExtn_List(s *capnp.Segment, sz int32) (LinkmetricsExtn_List, error) {
+	l, err := capnp.NewCompositeList(s, capnp.ObjectSize{DataSize: 8, PointerCount: 1}, sz)
+	return LinkmetricsExtn_List{l}, err
+}
+
+func (s LinkmetricsExtn_List) At(i int) LinkmetricsExtn { return LinkmetricsExtn{s.List.Struct(i)} }
+
+func (s LinkmetricsExtn_List) Set(i int, v LinkmetricsExtn) error {
+	return s.List.SetStruct(i, v.Struct)
+}
+
+func (s LinkmetricsExtn_List) String() string {
+	str, _ := text.MarshalList(0x89028b361140a3c2, s.List)
+	return str
+}
+
+// LinkmetricsExtn_Promise is a wrapper for a LinkmetricsExtn promised by a client call.
+type LinkmetricsExtn_Promise struct{ *capnp.Pipeline }
+
+func (p LinkmetricsExtn_Promise) Struct() (LinkmetricsExtn, error) {
+	s, err := p.Pipeline.Struct()
+	return LinkmetricsExtn{s}, err
+}
+
+func (p LinkmetricsExtn_Promise) LInfo() Latencyinfo_Promise {
+	return Latencyinfo_Promise{Pipeline: p.Pipeline.GetPipeline(0)}
+}
+
+const schema_e6c88f91b6a1209e = "x\xda\x8c\x94[h#U\x18\xc7\xbf\xff9\x93f\xb3" +
+	"b\x9bq\xb2\x0f+h\x16Qp\x17w\xedn\xb7\xa2" +
+	"EM[\x1a0\xd0\x87\x9cV\x05\xabE\x87\xc9I:" +
+	"vrf\x98\x99h\xe2K)\x14\xa1(HA\x85\xe2" +
+	"\x05\x8b\x0a\xfa\"j\xf1\x0a\x0a\x15\xbc<\xfb\xa2\xf8\xe6" +
+	"\x1d\xfa\xea\x93\xbe\x8c\xcc4w\x13\xdc\xb7!\xe7\xff}" +
+	"\xdf\xff\xfc\xfe_\xce\xf4\x11\xe6\xd9\xe5\xd4\xb7\x8cH\x9c" +
+	"KMD_\xbd9\xaf\xdf\xf5\x1c\xdb%q\x06\x88^" +
+	"?w\xf0\xf1\xde\x0b\xdf\xfdA)\xa4\x89fJ\xb8\x00" +
+	"\xe3\x91\xf8\xd3x\x08O\x13\xa2\xcd\xd3\xc7\xef\xee\xaf\xdd" +
+	"\xf0\xe2H\xf5\x07`0\xbeH\xd4\x9f%\xea\xbf\x7f\x9b" +
+	"\xbd\xfb\xd3\x9f\x8e^\x8e\xd5lX}\x91]\x81q\x1f" +
+	"\x8b\xd5\xf7\xb0?\x09\xd1\xfa\xd1\x8f\x0f?u\xa3\xff\xca" +
+	"Po-V\xdc\xc4\x7f1\xce\xf3\xf8\xeb6\x1ew\xbe" +
+	"t\xf3\x97\x8f\x9e\xbd\x0e\x1f\x8d\xf2a\xec\xf2\x7f\x8c\x97" +
+	"\x12\xf1^\">\xf8\xe6\x8e\xedI\xf9\xec\xd7#\x1a\xcf" +
+	"d\xb4E\x18g\x93\x19g\xb4\x02!\xfa$\xf5\xde\xe1" +
+	"\xfd?\x1c\xff:\xdc96:3\xab\x9d\x86QL\xd4" +
+	"\x0bZ\xec\xf9\xaf\xe7\x7f\xffy\xff\xb0\x15\x8dj-R" +
+	"s0\xccT,^O\xc5\xad=\xdf\x0d\xdd;\xcd\x80" +
+	"\xd7\x1f\x97\xcd0\xb8d\x99\x9e\xf2\xe6\x96m\xb5Y\x97" +
+	"\xa1o[\xc1T\xb1\x19\xaa2 Nq\x8dH\x03\x91" +
+	"~\xfe\x16\"q+\x87\x98f\x00r\x88\x7f\xbbx\x85" +
+	"H\xdc\xce!\xae2\xa4\x03\x19\x02\xc4\x00B\xde)\xa9" +
+	"\xaa\x8bl\xef\x0e\x04d\xc7\x0fV\x9e\xe54\x82P\xfa" +
+	"44\xf3\xc9^\xff\xce\xcc\xcbkDb\x9aC,3" +
+	"D\xed\xb2\x0aMI\xc7l!M\x0ciBd\xabP" +
+	"\xfaU\xd3\".\x03L\x12\xca\x1c\xc9\xd9\xe4X\x0b+" +
+	"n#\xb4U\xad\xec:v\xdej\x15\x9bal$\xdb" +
+	"5b\xc6\x97\x7f\x8cCl0\xe8\x1d'r\x91H<" +
+	"\xc1!\x1c\x06\x9d!\x07F\xa4\xdb\x17\x88D\x85Cx" +
+	"\x0c\xe09p\"\xbd\x1e\x0b78\xc4\xce \xa6-\xcf" +
+	"u\x1ely\x12\x13\xc40A\x98\xb2\xab\xa5%d\x88" +
+	"!C\xd8\xb2\x83\x8a\x19\xf4\xfcg\x86\xfc\xb3A\x84\x9e" +
+	"\x976m\x7f\x08\xdfJ\x0f\x9f\xfe\x1f~\xf7\xb2>P" +
+	"\x90\x83\xf0*\xd2!\xdeGt\xdcT\xabp\x92\xc05" +
+	"\xe4\xf6!\x91\xb8\xca!\xca\xe3ss\xccP*\xabe" +
+	"\xa3mK\xe6=\xd3\xf6\xbb\x08\xb2\xbd\x7f&a\x00\x86" +
+	"6`\xab\xb4\xba\xb4\xa0\x94\xdbP\x96\xacK\x15\x16\x9b" +
+	"a\xb2WZ\xd7\xdf\xf5q\x9c\xa78Dn0\x90q" +
+	"\xfb\xd9\xb6\xa5\xaa.\xd1\xd0b|\xdf\x8b\xb6\x8bx\xfb" +
+	"s\"\xb1\xc3!\xde`\x00;\xd9\x8b\xd7|\"\xf1*" +
+	"\x87x\x87A\xe78Y\x8c\xb7\x9f!\x12oq\x88\xf7" +
+	"Y\xf7\xf2\x8a\xb9\xca\x93\xd2\xb7U\xadM\x09}\x00\xba" +
+	"\xcf^\x1b@\xbb\xc8C\xa7\xa2\x90\x94\xf4Ut\x1f\xa8" +
+	"v\x85\xac\xf92\x08\x1c\x93\xf2Ie\x7f\xec\xae\xdb\x08" +
+	"\x1d*\x98\x83\x07\xa3\x99<`W*R\x95\xcdpc" +
+	"\xb5 k\x9d\xe7\xe2\xff\x11\xff\x1b\x00\x00\xff\xffE\xe9" +
+	"~\x1c"
 
 func init() {
 	schemas.Register(schema_e6c88f91b6a1209e,
+		0x89028b361140a3c2,
+		0x94125a99a9ea0a6b,
 		0x96c1dab83835e4f9,
+		0x9b721a7656d8c15d,
+		0xb5010b195bbe1e2e,
 		0xc586650e812cc6a1,
+		0xe3ead73eb3ae05b7,
 		0xff79b399e1e58cf3)
 }

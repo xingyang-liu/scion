@@ -18,26 +18,30 @@ struct HiddenPathSegExtn{
     set @0 :Bool;
 }
 
-struct LinkmetricsExtn {
-    struct Latencyinfo {
-        latencynonpeeringclusters @0 :List(Lnpcluster);
-        latencypeeringclusters @1 :List(Lpcluster);
-        egresslatency @2 :UInt16;
-        intooutlatency @3 :UInt16;
-
-        struct Lnpcluster {
-            clusterdelay @0 :UInt16;
-            interfaces @1 :List(UInt16);
-        }
-
-        struct Lpcluster {
-            clusterdelay @0 :UInt16;
-            latencyinterfacepairs @1 :List(Lppair);
-
-            struct Lppair {
-                interface @0 :UInt16;
-                interdelay @1 :UInt16;
-            }
-        }
-    }
+struct Lppair {
+    interface @0 :UInt16;
+    interdelay @1 :UInt16;
 }
+
+struct Lnpcluster {
+    clusterdelay @0 :UInt16;
+    interfaces @1 :List(UInt16);
+}
+
+struct Lpcluster {
+    clusterdelay @0 :UInt16;
+    latencyinterfacepairs @1 :List(Lppair);
+}
+
+struct Latencyinfo {
+    latencynonpeeringclusters @0 :List(Lnpcluster);
+    latencypeeringclusters @1 :List(Lpcluster);
+    egresslatency @2 :UInt16;
+    intooutlatency @3 :UInt16;
+}
+
+struct LinkmetricsExtn {
+    set @0 :Bool;
+    lInfo @1 :Latencyinfo;
+}
+

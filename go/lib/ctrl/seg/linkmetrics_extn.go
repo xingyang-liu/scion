@@ -17,7 +17,7 @@ type Lppair struct {
 }
 
 func (lp *Lppair) ProtoId() proto.ProtoIdType {
-	// TODO Compile asm_exts.capnp
+	return proto.Lppair_TypeID
 }
 
 func (lp *Lppair) String() string {
@@ -33,7 +33,7 @@ type Lpcluster struct {
 }
 
 func (lpc *Lpcluster) ProtoId() proto.ProtoIdType {
-	// TODO Compile asm_exts.capnp
+	return proto.Lpcluster_TypeID
 }
 
 func (lpc *Lpcluster) String() string {
@@ -53,7 +53,7 @@ type Lnpcluster struct {
 }
 
 func (lnpc *Lnpcluster) ProtoId() proto.ProtoIdType {
-	// TODO Compile asm_exts.capnp
+	return proto.Lnpcluster_TypeID
 }
 
 func (lnpc *Lnpcluster) String() string {
@@ -75,7 +75,7 @@ type Latencyinfo struct {
 }
 
 func (li *Latencyinfo) ProtoId() proto.ProtoIdType {
-	// TODO Compile asm_exts.capnp
+	return proto.Latencyinfo_TypeID
 }
 
 func (li *Latencyinfo) String() string {
@@ -96,16 +96,16 @@ func (li *Latencyinfo) String() string {
 
 type LinkmetricsExtn struct {
 	Set   bool
-	Linfo *Latencyinfo
+	LInfo *Latencyinfo
 }
 
 func (lm *LinkmetricsExtn) ProtoId() proto.ProtoIdType {
-	// TODO Compile asm_exts.capnp
+	return proto.LinkmetricsExtn_TypeID
 }
 
 func (lm *LinkmetricsExtn) String() string {
 	if lm == nil {
 		return "nil"
 	}
-	return fmt.Sprintf("Set: %v\nLatencyInfo: %v", lm.Set, lm.Linfo)
+	return fmt.Sprintf("Set: %v\nLatencyInfo: %v", lm.Set, lm.LInfo)
 }
