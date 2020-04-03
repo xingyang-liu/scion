@@ -6,6 +6,7 @@ go_library(
         "as.go",
         "hiddenpath_extn.go",
         "hop.go",
+        "linkmetrics_extn.go"
         "meta.go",
         "seg.go",
         "segs.go",
