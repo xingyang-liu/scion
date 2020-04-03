@@ -83,7 +83,7 @@ func (ase *ASEntry) ProtoId() proto.ProtoIdType {
 }
 
 func (ase *ASEntry) String() string {
-	return fmt.Sprintf("%s Trc: %d Cert: %d Ifid size: %d Hops: %d MTU: %d Hidden: %v",
+	return fmt.Sprintf("%s Trc: %d Cert: %d Ifid size: %d Hops: %d MTU: %d Hidden: %v LinkMetrics: %v",
 		ase.IA(), ase.TrcVer, ase.CertVer, ase.IfIDSize, len(ase.HopEntries),
-		ase.MTU, ase.Exts.HiddenPathSeg)
+		ase.MTU, ase.Exts.HiddenPathSeg, ase.Exts.Linkmetrics)
 }
