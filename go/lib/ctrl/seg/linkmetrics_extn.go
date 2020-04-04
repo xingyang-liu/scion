@@ -1,8 +1,11 @@
 package seg
 
 import (
+	"bytes"
+	"encoding/binary"
 	"fmt"
 	"github.com/scionproto/scion/go/proto"
+	"io"
 )
 
 var _ proto.Cerealizable = (*Lppair)(nil)
@@ -108,4 +111,28 @@ func (lm *LinkmetricsExtn) String() string {
 		return "nil"
 	}
 	return fmt.Sprintf("Set: %v\nLatencyInfo: %v", lm.Set, lm.LInfo)
+}
+
+func (lm *LinkmetricsExtn) WriteTo(w io.Writer) (int64, error) {
+	var total int64
+	var buf bytes.Buffer
+	err := proto.SerializeTo(lm, &buf)
+	if err != nil {
+		return 0, err
+	}
+
+	blen := make([]byte, 4)
+	binary.LittleEndian.PutUint32(blen, uint32(buf.Len()))
+	n, err := w.Write(blen)
+	if err != nil {
+		return 0, err
+	}
+	total += int64(n)
+
+	n, err = w.Write(buf.Bytes())
+	if err != nil {
+		return total, err
+	}
+	total += int64(n)
+	return total, nil
 }

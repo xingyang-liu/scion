@@ -128,6 +128,12 @@ func (p *Path) WriteTo(w io.Writer) (int64, error) {
 				return total, err
 			}
 		}
+
+		n, err = segment.Metrics.WriteTo(w)
+		if err != nil {
+			return total, err
+		}
+		total += n
 	}
 	return total, nil
 }
@@ -137,6 +143,7 @@ type Segment struct {
 	HopFields  []*HopField
 	Type       proto.PathSegType
 	Interfaces []sciond.PathInterface
+	Metrics    *seg.LinkmetricsExtn
 }
 
 // initInfoFieldFrom copies the info field in pathSegment, and sets it as the
